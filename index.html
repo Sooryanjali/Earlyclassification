@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Comment Analysis</title>
+</head>
+<body>
+    <h2>Type a Comment</h2>
+    <textarea id="commentBox" rows="5" cols="50" placeholder="Start typing..."></textarea>
+    <p><strong>Classification:</strong> <span id="output">Waiting...</span></p>
+
+    <script>
+        let commentBox = document.getElementById("commentBox");
+        let output = document.getElementById("output");
+
+        commentBox.addEventListener("input", function () {
+            let words = commentBox.value.trim().split(/\s+/);
+            
+            // Only send request after every 3 words
+            if (words.length % 3 === 0 && words.length > 0) {
+                fetch("/classify", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ text: commentBox.value })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    output.textContent = data.prediction;
+                })
+                .catch(error => console.error("Error:", error));
+            }
+        });
+    </script>
+</body>
+</html>

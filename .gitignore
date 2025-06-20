@@ -1,0 +1,31 @@
+
+# Ignore virtual environments
+venv/
+.env/
+
+# Ignore large models
+*.pkl
+*.h5
+*.npy
+*.pt
+*.bin
+*.keras
+
+# Ignore datasets
+*.csv
+*.tsv
+data/
+
+# Ignore saved model folders
+saved_model*/
+saved_models/
+models/
+checkpoints/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+
