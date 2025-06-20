@@ -1,7 +1,7 @@
 
 # Ignore virtual environments
 venv/
-.env/
+env/
 
 # Ignore large models
 *.pkl
@@ -10,11 +10,6 @@ venv/
 *.pt
 *.bin
 *.keras
-
-# Ignore datasets
-*.csv
-*.tsv
-data/
 
 # Ignore saved model folders
 saved_model*/
@@ -29,3 +24,5 @@ Thumbs.db
 # Python cache
 __pycache__/
 
+
+!*.csv
